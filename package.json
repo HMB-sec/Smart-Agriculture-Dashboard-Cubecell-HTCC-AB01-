@@ -1,0 +1,21 @@
+{
+  "name": "lora-sensor-dashboard",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@serialport/parser-readline": "^13.0.0",
+    "chart.js": "^4.5.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "serialport": "^13.0.0",
+    "socket.io": "^4.8.1"
+  }
+}

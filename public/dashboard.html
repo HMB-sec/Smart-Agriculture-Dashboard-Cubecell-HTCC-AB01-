@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Agriculture Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="header-left">
+      <h1>🌱 Smart Agriculture Dashboard</h1>
+    </div>
+    <div class="header-right">
+      <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <div class="dashboard-grid">
+      <!-- Temperature Card -->
+      <div class="dashboard-card temperature-card">
+        <h2 class="temperature-title">Temperature</h2>
+        <div class="value-container">
+          <div class="value temperature-value" id="temperature">--</div>
+          <div class="unit">°C</div>
+        </div>
+        <div class="chart-container">
+          <canvas id="tempChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Humidity Card -->
+      <div class="dashboard-card humidity-card">
+        <h2 class="humidity-title">Humidity</h2>
+        <div class="value-container">
+          <div class="value humidity-value" id="humidity">--</div>
+          <div class="unit">%</div>
+        </div>
+        <div class="chart-container">
+          <canvas id="humidityChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Soil Moisture Card -->
+      <div class="dashboard-card moisture-card">
+        <h2 class="moisture-title">Soil Moisture</h2>
+        <div class="value-container">
+          <div class="value moisture-value" id="moisture">--</div>
+          <div class="unit">units</div>
+        </div>
+        <div class="chart-container">
+          <canvas id="moistureChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Air Quality Card -->
+      <div class="dashboard-card mq135-card">
+        <h2 class="mq135-title">Air Quality </h2>
+        <div class="value-container">
+          <div class="value mq135-value" id="mq135">--</div>
+          <div class="unit">ppm</div>
+        </div>
+        <div class="chart-container">
+          <canvas id="mq135Chart"></canvas>
+        </div>
+      </div>
+
+      <!-- Location Card -->
+      <div class="dashboard-card full-width location-card">
+        <h2>Device Location</h2>
+        <div id="locationText">Latitude: --, Longitude: --</div>
+        <div class="signal-info">
+          <div class="signal-item">
+            <span>RSSI:</span>
+            <span id="rssiValue">--</span>
+          </div>
+          <div class="signal-item">
+            <span>SNR:</span>
+            <span id="snrValue">--</span>
+          </div>
+        </div>
+        <div class="map-container" id="map"></div>
+      </div>
+    </div>
+
+    <div class="status-bar">
+      <div id="connectionStatus">Status: Connecting...</div>
+      <div id="lastUpdate">Last update: --</div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
